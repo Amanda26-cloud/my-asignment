@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade App</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container{
+            background: pink;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(red, green, blue, alpha);
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button:hover{
+            background: darkviolet;
+        }
+
+        .result{
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        img{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Grade Checker</h2>
+
+        <input type="text" id="name" placeholder="Student name">
+
+        <input type="text" id="score" placeholder="Student score">
+
+        <input type="text" id="image" placeholder="image URL">
+
+        <button onclick="checkGrade()">Submit</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+
+        function checkGrade(){
+
+            let name = document.getElementById("name").value;
+            let score = Number(document.getElementById("score").value);
+            let image = document.getElementById("image").value;
+
+            let Grade = "";
+            let Status = "";
+
+            if(score >= 70){
+                Grade = "A";
+            }
+            else if(score >= 60){
+                Grade = "B";
+            }
+            else if(score >= 50){
+                Grade = "C";
+            }
+            else if(score >= 45){
+                Grade = "D";
+            }
+            else if(score >= 40){
+                Grade = "E";
+            }
+            else{
+                Grade = "F";
+            }
+
+            status = score >= 50 ? "Passed" : "Failed";
+
+            document.getElementById("result").innerHTML = `
+            <img src="${image}" alt="Student image">
+            <h3>${name}</h3>
+            <p><strong>score:</strong> ${score}</p>
+            <p><strong>Grade:</strong> ${Grade}</p>
+            <p><strong>status:</strong>${status}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
